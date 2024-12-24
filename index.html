@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Метроном Online!</title>
+    <link rel="stylesheet" href="nomalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="wrapper-header">
+            <a href="#"><h1>Метроном Online</h1></a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="main-flex-wrapper">
+                    <div class="information-block">
+                        <h2 class="info-need">Настройка метронома</h2>
+                        <p class="info">Тут вы можете настроить необходимый размер и темп метронома.</p>
+                    </div>
+                    <form action="#" method="post">
+                        <div class="form-inside-wrapper">
+                            <button id="plus1">+</button>
+                            <input value="4" id="counter-top">
+                            <button id="minus1">-</button><br>
+                            <button id="plus2">+</button>
+                            <input value="4" id="counter-bottom">
+                            <button id="minus2">-</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer-wrapper">
+            <p>Курсовой проект "Метроном Онлайн"</p>
+            <p>Вполнили: Милосердов Николай и Воротилин Илья</p>
+            <p>Группа 241-321</p>
+        </div>
+    </footer>
+</body>
+</html>
+<script>
+    var input1 = document.querySelector('#counter-top');
+    var plus1 = document.querySelector('#plus1');
+    var minus1 = document.querySelector('#minus1');
+
+    plus1.addEventListener('click', function(event) {
+        event.preventDefault();
+        input1.value = Number(input1.value) + 1;
+    });
+
+    minus1.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (Number(input1.value) > 1) {
+            input1.value = Number(input1.value) - 1;
+        } else {
+            input1.value = 1; 
+        }
+    });
+
+    var input2 = document.querySelector('#counter-bottom');
+    var plus2 = document.querySelector('#plus2');
+    var minus2 = document.querySelector('#minus2');
+
+    plus2.addEventListener('click', function(event) {
+        event.preventDefault();
+        input2.value = Number(input2.value) + 1;
+    });
+
+    minus2.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (Number(input2.value) > 1) {
+            input2.value = Number(input2.value) - 1;
+        } else {
+            input2.value = 1; 
+        }
+    });
+</script>

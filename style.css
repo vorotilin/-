@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Gotham-Black';
+    src: url(fonts/Gotham-Black.ttf);
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url(fonts/Roboto-Regular.ttf);
+}
+:root {
+    --background: #1c1a1f;
+    --light-bg: #2f2b36;
+    --yellow: #fa8d3e;
+    --white: #fff8f0;
+    font-size: 62.5%;
+    --weight-title: 500;
+    --title-font: 'Gotham-Black';
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--background);
+    color: var(--white);
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-family: 'Roboto';
+}
+a{
+    text-decoration: none;
+    color: var(--white);
+    transition: 0.4s ease;
+}
+a:hover {
+    color: var(--yellow);
+}
+header{
+    background-color: var(--light-bg);
+    min-height: 7rem;
+}
+footer{
+    background-color: var(--light-bg);
+    padding-block: 3%;
+}
+.container {
+    padding-inline: 5%;
+}
+.wrapper-header {
+    padding-inline: 2%;
+    height: 100%;
+}
+h1 {
+    font-family: var(--title-font);
+    font-size: 4rem;
+    line-height: 100%;
+    margin-block: 0;
+    padding-block: 1.5rem;
+}
+h2 {
+    font-family: var(--title-font);
+    font-size: 3.5rem;
+    line-height: 4rem;
+    margin-block: 0.5rem;
+}
+.for-yellow {
+    color: var(--yellow);
+}
+.info {
+    display: none;
+}
+.info::before {
+    content: "( i )  ";
+    color: var(--yellow);
+    font-weight: bold;
+}
+.information-block{
+    margin-block: 3rem;
+    transition: 1s ease;
+}
+.information-block:hover {
+    background-color: var(--light-bg);
+    padding-block: 2rem 1.5rem;
+    padding-inline: 3rem;
+    margin-block: 5rem;
+}
+.information-block:hover .info-need{
+    color: var(--yellow);
+}
+.information-block:hover .info{
+    display: block;
+}
