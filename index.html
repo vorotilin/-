@@ -23,12 +23,18 @@
                     </div>
                     <form action="#" method="post">
                         <div class="form-inside-wrapper">
-                            <button id="plus1">+</button>
-                            <input value="4" id="counter-top">
-                            <button id="minus1">-</button><br>
-                            <button id="plus2">+</button>
-                            <input value="4" id="counter-bottom">
-                            <button id="minus2">-</button>
+                            <div class="fraction-wrapper">
+                                <div class="fraction fraction-numenator">
+                                    <button class="btn-sign fraction-flex-item" id="minus1">-</button>
+                                    <input value="4" class="counter fraction-flex-item" id="counter-top">
+                                    <button class="btn-sign fraction-flex-item" id="plus1">+</button>
+                                </div>
+                                <div class="fraction fraction-denominator">
+                                    <button class="btn-sign fraction-flex-item" id="minus2">-</button>
+                                    <input value="4" class="counter fraction-flex-item" id="counter-bottom">
+                                    <button class="btn-sign fraction-flex-item" id="plus2">+</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -43,7 +49,6 @@
         </div>
     </footer>
 </body>
-</html>
 <script>
     var input1 = document.querySelector('#counter-top');
     var plus1 = document.querySelector('#plus1');
@@ -81,3 +86,4 @@
         }
     });
 </script>
+</html>

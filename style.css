@@ -88,3 +88,34 @@ h2 {
 .information-block:hover .info{
     display: block;
 }
+.fraction{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+.counter{
+    height: 10rem;
+    max-width: 10rem;
+    outline: 0;
+    background-color: var(--background);
+    border: 0;
+    color: var(--yellow);
+    font-family: var(--title-font);
+    font-size: 10rem;
+    line-height: 10rem;
+    flex-grow: 2;
+    text-align: center;
+}
+.btn-sign {
+    display: block;
+    text-align: center;
+    width: 5rem;
+    height: 5rem;
+    margin-block: 2.5rem;
+    font-size: 5rem;
+    line-height: 5rem;
+    background-color: transparent;
+    border:0;
+    color: var(--yellow);
+    font-weight: bold;
+}
