@@ -25,18 +25,22 @@
                         <form class="big-flex-item" action="#" method="post">
                             <div class="form-inside-wrapper">
                                 <div class="fraction-wrapper">
+                                    <span>Размер</span>
                                     <div class="fraction fraction-numenator">
                                         <button class="btn-sign fraction-flex-item" id="minus1">-</button>
-                                        <input value="4" class="counter fraction-flex-item" id="counter-top" required><span class="invalidy">Должно быть введено число больше 1</span>
+                                        <input value="4" class="counter fraction-flex-item" id="counter-top" required><span class="invalidy">Введено неверное значение</span>
                                         <button class="btn-sign fraction-flex-item" id="plus1">+</button>
                                     </div>
                                     <div class="fraction fraction-denominator">
                                         <button class="btn-sign fraction-flex-item" id="minus2">-</button>
-                                        <input value="4" class="counter fraction-flex-item" id="counter-bottom" required><span class="invalidy">Должно быть введено число больше 1</span>
+                                        <input value="4" class="counter fraction-flex-item" id="counter-bottom" required><span class="invalidy">Введено неверное значение</span>
                                         <button class="btn-sign fraction-flex-item" id="plus2">+</button>
                                     </div>
                                 </div>
-                                <label>Скорость<input class="range-input" id="speed-range" type="range"></label>
+                                <div class="speed-wrapper">
+                                    <label>Скорость<input class="range-input" id="speed-range" type="range" min="1" max="500" value="100" onchange="rangeslide(this.value)" onmousemove="rangeslide(this.value)"></label>
+                                    <div class="counter fraction-flex-item" id="counterspeed">100</div>
+                                </div>
                                 <div class="flex-form">
                                     <button class="btn-form" type="submit">Сохранить настройки</button>
                                     <button class="btn-form" type="reset">Сбросить</button>
@@ -44,9 +48,7 @@
                             </div>
                         </form>
                         <div class="big-flex-item big-flex-item-play">
-                            <button id="start-stop">
-
-                            </button>
+                            <button id="start-stop">Старт</button>
                         </div>
                     </div>
                 </div>
@@ -81,41 +83,51 @@
         </div>
     </footer>
 </body>
-<script>
-    var input1 = document.querySelector('#counter-top');
-    var plus1 = document.querySelector('#plus1');
-    var minus1 = document.querySelector('#minus1');
+    <script type="text/javascript">
+        var input1 = document.querySelector('#counter-top');
+        var plus1 = document.querySelector('#plus1');
+        var minus1 = document.querySelector('#minus1');
 
-    plus1.addEventListener('click', function(event) {
-        event.preventDefault();
-        input1.value = Number(input1.value) + 1;
-    });
+        plus1.addEventListener('click', function(event) {
+            event.preventDefault();
+            input1.value = Number(input1.value) + 1;
+        });
 
-    minus1.addEventListener('click', function(event) {
-        event.preventDefault();
-        if (Number(input1.value) > 1) {
-            input1.value = Number(input1.value) - 1;
-        } else {
-            input1.value = 1; 
+        minus1.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (Number(input1.value) > 1) {
+                input1.value = Number(input1.value) - 1;
+            } else {
+                input1.value = 1; 
+            }
+        });
+
+        var input2 = document.querySelector('#counter-bottom');
+        var plus2 = document.querySelector('#plus2');
+        var minus2 = document.querySelector('#minus2');
+
+        plus2.addEventListener('click', function(event) {
+            event.preventDefault();
+            input2.value = Number(input2.value) + 1;
+        });
+
+        minus2.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (Number(input2.value) > 1) {
+                input2.value = Number(input2.value) - 1;
+            } else {
+                input2.value = 1; 
+            }
+        });
+        const startstop = document.getElementById('#start-stop');
+        let isPlaying = false;
+
+        startstop.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            startstop.textContent = isPlaying ? 'Пауза' : 'Старт';
+        });
+        function rangeslide(value){
+            document.getElementById('counterspeed').innerHTML = value;
         }
-    });
-
-    var input2 = document.querySelector('#counter-bottom');
-    var plus2 = document.querySelector('#plus2');
-    var minus2 = document.querySelector('#minus2');
-
-    plus2.addEventListener('click', function(event) {
-        event.preventDefault();
-        input2.value = Number(input2.value) + 1;
-    });
-
-    minus2.addEventListener('click', function(event) {
-        event.preventDefault();
-        if (Number(input2.value) > 1) {
-            input2.value = Number(input2.value) - 1;
-        } else {
-            input2.value = 1; 
-        }
-    });
-</script>
+    </script>
 </html>

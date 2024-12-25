@@ -101,7 +101,7 @@ h2 {
 }
 .counter{
     height: 10rem;
-    max-width: 10rem;
+    max-width: 20rem;
     outline: 0;
     background-color: var(--background);
     border: 0;
@@ -214,6 +214,7 @@ input:invalid + .invalidy {
     color: var(--yellow);
 }
 .range-input {
+    appearance: none;
     display: block;
     width: 100%;
     margin-block: 2rem;
@@ -223,7 +224,9 @@ input:invalid + .invalidy {
     background: var(--yellow);
     color: var(--white);
 }
-.range-input::-webkit-slider-thumb{
+.range-input::-webkit-slider-thumb, .range-input::-moz-range-thumb , .range-input::-ms-thumb{
+    cursor: pointer;
+    background: var(--white);
     color: var(--white);
 }
 .big-flex-item {
@@ -236,6 +239,27 @@ input:invalid + .invalidy {
     margin-top: 10%;
     height: 60%;
     aspect-ratio: 1/1;
+    background-color: var(--yellow);
+    color: var(--white);
+    border: 0;
+    border-radius: 1rem;
+    transition: 0.4s ease;
+}
+#start-stop:hover {
+    border: 0.3rem solid;
+    border-color: var(--white);
+    scale: 95%;
+}
+#start-stop:active {
+    background-color: var(--white);
+    color: var(--yellow);
+}
+#counterspeed {
+    text-align: left;
+    max-width: 30rem;
+}
+button{
+    cursor: pointer;
 }
 @media (max-width: 60rem) {
     .flex-form {
