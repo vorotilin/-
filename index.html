@@ -16,25 +16,57 @@
     <main>
         <section>
             <div class="container">
-                <div class="main-flex-wrapper">
+                <div class="main-wrapper">
                     <div class="information-block">
                         <h2 class="info-need">Настройка метронома</h2>
                         <p class="info">Тут вы можете настроить необходимый размер и темп метронома.</p>
-                    </div>
-                    <form action="#" method="post">
-                        <div class="form-inside-wrapper">
-                            <div class="fraction-wrapper">
-                                <div class="fraction fraction-numenator">
-                                    <button class="btn-sign fraction-flex-item" id="minus1">-</button>
-                                    <input value="4" class="counter fraction-flex-item" id="counter-top">
-                                    <button class="btn-sign fraction-flex-item" id="plus1">+</button>
+                     </div>
+                    <div class="metronome-wrapper">
+                        <form class="big-flex-item" action="#" method="post">
+                            <div class="form-inside-wrapper">
+                                <div class="fraction-wrapper">
+                                    <div class="fraction fraction-numenator">
+                                        <button class="btn-sign fraction-flex-item" id="minus1">-</button>
+                                        <input value="4" class="counter fraction-flex-item" id="counter-top" required><span class="invalidy">Должно быть введено число больше 1</span>
+                                        <button class="btn-sign fraction-flex-item" id="plus1">+</button>
+                                    </div>
+                                    <div class="fraction fraction-denominator">
+                                        <button class="btn-sign fraction-flex-item" id="minus2">-</button>
+                                        <input value="4" class="counter fraction-flex-item" id="counter-bottom" required><span class="invalidy">Должно быть введено число больше 1</span>
+                                        <button class="btn-sign fraction-flex-item" id="plus2">+</button>
+                                    </div>
                                 </div>
-                                <div class="fraction fraction-denominator">
-                                    <button class="btn-sign fraction-flex-item" id="minus2">-</button>
-                                    <input value="4" class="counter fraction-flex-item" id="counter-bottom">
-                                    <button class="btn-sign fraction-flex-item" id="plus2">+</button>
+                                <label>Скорость<input class="range-input" id="speed-range" type="range"></label>
+                                <div class="flex-form">
+                                    <button class="btn-form" type="submit">Сохранить настройки</button>
+                                    <button class="btn-form" type="reset">Сбросить</button>
                                 </div>
                             </div>
+                        </form>
+                        <div class="big-flex-item big-flex-item-play">
+                            <button id="start-stop">
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="information-block">
+                    <h2 class="info-need">Авторизация</h2>
+                    <p class="info">Авторизуйтесь для возможности сохранения пользовательских настроек метронома.</p>
+                </div>
+                <div class="reg-form-wrapper">
+                    <form action="#">
+                        <div class="flex-reg-form">
+                            <label class="reg-label">Имя пользователя:<input id="username" class="reg-input" type="text" placeholder="Николай Воротилин" required></label>
+                            <label class="reg-label">Пароль:<input id="password" class="reg-input" type="password" required></label>
+                        </div>
+                        <div class="flex-form">
+                            <button class="btn-form" type="submit">Авторизоваться</button>
+                            <button class="btn-form" type="reset">Сбросить</button>
                         </div>
                     </form>
                 </div>
