@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Метроном Online!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'metronom\nomalize.css' %}">
+    <link rel="stylesheet" href="{% static 'metronom\style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="wrapper-header">
+            <a href="#"><h1>Метроном Online</h1></a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container container-first">
+                <div class="main-wrapper">
+                    <div class="information-block">
+                        <h2 class="info-need">Настройка метронома</h2>
+                        <p class="info">Тут вы можете настроить необходимый размер и темп метронома.</p>
+                     </div>
+                    <div class="metronome-wrapper">
+                        <form class="big-flex-item" onsubmit="return false" action="#" method="post">
+                            {% csrf_token %}
+                            <div class="form-inside-wrapper">
+                                <div class="fraction-wrapper">
+                                    <span>Размер</span>
+                                    <div class="fraction fraction-numenator">
+                                        <button class="btn-sign fraction-flex-item" id="minus1">-</button>
+                                        <input value="4" class="counter fraction-flex-item" id="counter-top" name="counter-top" pattern="[0-9]{1,3}" required><span class="invalidy">Введено неверное значение</span>
+                                        <button class="btn-sign fraction-flex-item" id="plus1">+</button>
+                                    </div>
+                                    <div class="fraction fraction-denominator">
+                                        <button class="btn-sign fraction-flex-item" id="minus2">-</button>
+                                        <input value="4" class="counter fraction-flex-item" id="counter-bottom" name="counter-bottom" pattern="[0-9]{1,3}"  required><span class="invalidy">Введено неверное значение</span>
+                                        <button class="btn-sign fraction-flex-item" id="plus2">+</button>
+                                    </div>
+                                </div>
+                                <div class="speed-wrapper">
+                                    <label>Скорость<input class="range-input" id="speed-range" type="range" min="1" max="500" name="range" value="100" onchange="rangeslide(this.value)" onmousemove="rangeslide(this.value)"></label>
+                                    <div class="counter fraction-flex-item" id="counterspeed">100</div>
+                                </div>
+                                <div class="flex-form">
+                                    {% if user.is_authenticated %}
+                                    <button class="btn-form" type="submit">Сохранить настройки</button>
+                                    {% endif %}
+                                    <button class="btn-form" type="reset">Сбросить</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="big-flex-item big-flex-item-play">
+                            <button id="start-stop">Старт</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="information-block">
+                    <h2 class="info-need">Авторизация</h2>
+                    <p class="info">Авторизуйтесь для возможности сохранения пользовательских настроек метронома.</p>
+                    <h1>User Profile</h1>
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Range:</strong> {{ user.range }}</p>
+                    <p><strong>Counter Bottom:</strong> {{ user.counter_bottom }}</p>
+                    <p><strong>Counter Top:</strong> {{ user.counter_top }}</p>
+                </div>
+                <div class="reg-form-wrapper">
+                    {% if user.is_authenticated %}
+                    <p>Добро пожаловать, {{ user.username }}!</p>
+                    <a class="header-ref"  href="{% url 'logout' %}">Выйти</a>
+                    {% else %}
+                    <form method="post" class="sisi">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    <button type="submit">Войти</button>
+                    </form>
+                    <a class="header-ref" href="{% url 'register' %}">Регистрация</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container footer-wrapper">
+            <p>Курсовой проект "Метроном Онлайн"</p>
+            <p>Вполнили: Воротилин Илья Милосердов Николай</p>
+            <p>Группа 241-321</p>
+        </div>
+    </footer>
+</body>
+    <script src="{% static 'scripts/knopki.js' %}"></script>
+</html>
