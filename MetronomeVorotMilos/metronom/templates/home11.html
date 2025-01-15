@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="{% static 'metronom\nomalize.css' %}">
     <link rel="stylesheet" href="{% static 'metronom\style.css' %}">
     <style>
-
-
+        .hidden {
+            display: none;
+        }
         #list li button {
             all: unset;
             color: white;
@@ -44,7 +45,6 @@
                         <form class="big-flex-item" onsubmit="return false"  method="post" action="#">
                             {% csrf_token %}
                             <div class="form-inside-wrapper">
-                                
                                 <div class="fraction-wrapper">
                                     <span>Размер</span>
                                     <div class="fraction fraction-numenator">
@@ -75,17 +75,26 @@
                                 </div>
                                 <div class="flex-form" >
                                     {% if user.is_authenticated %}
+                                    
+                                        {% if user.username == 'kolamiloserdov329' %}
+                                        <ol style="list-style: none;" id="list">
+                                            <li><button type="button" id="fillButton1">Лунная соната - 75 BPM, 3, 2.</button></li>
+                                            <li><button type="button" id="fillButton2">Весна (Времена года) - 120 BPM, 4, 3.</button></li>
+                                            <li><button type="button" id="fillButton3">Симфония № 5 - 90 BPM, 2, 1.</button></li>
+                                            <li><button type="button" id="fillButton4">Токката и фуга - 60 BPM, 1, 5.</button></li>
+                                            <li><button type="button" id="fillButton5">Свадебный марш - 110 BPM, 3, 4.</button></li>
+                                        </ol>
+                                        {% else %}
                                         <ol style="list-style: none;" id="list">
                                             
                                         </ol>
-                                        
+                                        {% endif %}
                                     {% endif %}
                                 </div>
                             </div>
                         </form>
                         <div class="big-flex-item big-flex-item-play">
                             <button id="start-stop">Старт</button>
-                            
                         </div>
                     </div>
                 </div>
@@ -123,52 +132,60 @@
         </div>
     </footer>
     <script>
-        const userId = "{{ user.username }}";
-        const userSettingsKey = `user_settings_${userId}`; 
-        function loadSettings() {
-            const settings = JSON.parse(localStorage.getItem(userSettingsKey)) || []; 
-            settings.forEach(setting => {
-                addSettingToList(setting);
-            });
-        }
-        function addSettingToList(setting) {
-            const li = document.createElement('li');
-            
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.textContent = `${setting.name} - ${setting.bpm} BPM, ${setting.top}, ${setting.bottom}`; 
-
-            button.addEventListener('click', function() {
-                document.getElementById('speed-range').value = setting.bpm; 
-                document.getElementById('counter-top').value = setting.top; 
-                document.getElementById('counter-bottom').value = setting.bottom;
-                document.getElementById('name').value = setting.name;
-            });
-
-            li.appendChild(button);
-            document.getElementById('list').appendChild(li);
-        }
-
         document.getElementById('addButton').addEventListener('click', function() {
             const name = document.getElementById('name').value;
             const bpm = document.getElementById('speed-range').value;
             const bottom = document.getElementById('counter-bottom').value;
             const top = document.getElementById('counter-top').value;
 
-            
-            const newSetting = { name, bpm, top, bottom };
-            addSettingToList(newSetting);
+            const li = document.createElement('li');
+                   
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = `${name} - ${bpm} BPM, ${top}, ${bottom}.`;
 
-            const currentSettings = JSON.parse(localStorage.getItem(userSettingsKey)) || [];
-            currentSettings.push(newSetting);
-            localStorage.setItem(userSettingsKey, JSON.stringify(currentSettings));
-                
+            button.addEventListener('click', function() {
+                document.getElementById('speed-range').value = bpm;
+                document.getElementById('counter-top').value = top;
+                document.getElementById('counter-bottom').value = bottom;
+            });
 
-            
+            li.appendChild(button);
+            document.getElementById('list').appendChild(li);
+        });                
+
+        document.getElementById('fillButton1').addEventListener('click', function() {
+            document.getElementById('speed-range').value = '75';
+            document.getElementById('counter-top').value = '3';
+            document.getElementById('counter-bottom').value = '2';
         });
-        window.onload = loadSettings;  
+
+        document.getElementById('fillButton2').addEventListener('click', function() {
+            document.getElementById('speed-range').value = '120';
+            document.getElementById('counter-top').value = '4';
+            document.getElementById('counter-bottom').value = '3';
+        });
+
+        document.getElementById('fillButton3').addEventListener('click', function() {
+            document.getElementById('speed-range').value = '90';
+            document.getElementById('counter-top').value = '2';
+            document.getElementById('counter-bottom').value = '1';
+        });
+
+        document.getElementById('fillButton4').addEventListener('click', function() {
+            document.getElementById('speed-range').value = '60';
+            document.getElementById('counter-top').value = '1';
+            document.getElementById('counter-bottom').value = '5';
+        });
+
+        document.getElementById('fillButton5').addEventListener('click', function() {
+            document.getElementById('speed-range').value = '110';
+            document.getElementById('counter-top').value = '3';
+            document.getElementById('counter-bottom').value = '4';
+        });
+            
+        
     </script>
-    <script src="{% static 'scripts/knopki.js' %}"></script>
 </body>
-    
+    <script src="{% static 'scripts/knopki.js' %}"></script>
 </html>

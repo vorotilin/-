@@ -8,14 +8,33 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Регистрация</h1>
-    <form method="post" class="sisi">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
-    </form>
-    <a class="header-ref" href="{% url 'home' %}">Назад на главную</a>
-    </div>
+    <header>
+        <div class="wrapper-header">
+            <a href="#"><h1>Метроном Online</h1></a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container container-first">
+                <h1>Регистрация </h1>
+                <span style="display: block; bottom: unset; top: 10rem;" class="invalidy">!!!Пароль обязан содержать цифры, спец символы и только латинские буквы!!!</span>
+            <form method="post" class="sisi">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <a class="header-ref" href="{% url 'home' %}">Назад на главную</a>
+            </div>
+        </section>
+        <footer>
+            <div class="container footer-wrapper">
+                <p>Курсовой проект "Метроном Онлайн"</p>
+                <p>Выполнили: Воротилин Илья и Милосердов Николай</p>
+                <p>Группа 241-321</p>
+                <a href="{% static 'metronom\Презентация к проекту PDF1.pdf' %}">Презентация к курсовому</a><br>
+                <a href="https://github.com/vorotilin/MetronomeVorotMilos" style="width: 100%;">Ссылка на Github проекта</a>
+            </div>
+        </footer>
+    </main>
 </body>
 </html>
